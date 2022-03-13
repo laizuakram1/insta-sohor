@@ -33,10 +33,13 @@ const displayContent = (text) => {
 };
 
 const switchTab = (id) => {
+  
     if (id === "posts") {
+      
         document.getElementById( "posts" ).style.display = "grid";
         document.getElementById( "liked" ).style.display = "none";
         document.getElementById( "reported" ).style.display = "none";
+        
     } else if (id === "liked") {
         document.getElementById( "liked" ).style.display = "block";
         document.getElementById( "posts" ).style.display = "none";
@@ -45,15 +48,15 @@ const switchTab = (id) => {
         displayLikedPosts();
     } else {
         document.getElementById( "reported" ).style.display = "block";
-        document.getElementById( "posts" ).style.display = "none";
+        document.getElementById( "posts" ).style.display = "block";
         document.getElementById( "liked" ).style.display = "none";
 
-        displayReportedPosts();
+        displayLikedPosts();
     }
 };
 
 const createPost = (post) => {
-  console.log(post);
+ 
     const image = post.image;
     const div = document.createElement( "article" );
     div.classList.add( "post" );
@@ -65,7 +68,7 @@ const createPost = (post) => {
                     target="_blank"
                     class="post__avatar"
                   >
-                    <img src="${image}" alt="User Picture" />
+                    <img src="${post.userImage}" alt="User Picture" />
                   </a>
                   <a href="#" class="post__user">phero</a>
                 </div>
@@ -151,6 +154,8 @@ const displayLikedPosts = () => {
     likedPosts.forEach((post) => {
         const div = createPost(post);
         document.getElementById( "liked" ).appendChild(div);
+
+        
     });
 };
 
